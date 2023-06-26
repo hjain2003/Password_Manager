@@ -10,6 +10,10 @@ const passwordSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    additionalinfo:{
+        type: String,
+        required: false
+    },
     user :{
         type : mongoose.Types.ObjectId,
         ref: "User",
