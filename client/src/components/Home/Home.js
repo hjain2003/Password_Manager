@@ -10,7 +10,7 @@ const Home = () => {
                 <p>A secure, reliable and easy-to-use platform to</p>
                 <p> store and manage your passwords</p>
                 <br />
-                <button id="home_btn">SignUp</button>
+                <button id="home_btn"><a href="">SignUp</a></button>
             </div>
         </div>
     )
