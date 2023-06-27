@@ -153,5 +153,9 @@ export const verifyOTP = async (req, res) => {
   }
 };
 
-
+//logout
+export const logout = async(req,res)=>{
+  res.clearCookie('jwtoken',{path:'/'})
+  res.status(200).json({message : "user logged out"});
+}
 

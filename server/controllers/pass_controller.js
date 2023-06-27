@@ -71,3 +71,30 @@ export const deletePass = async (req, res) => {
     return console.log(error);
   }
 }
+
+//editPass
+export const updatePass = async (req, res) => {
+  const id = req.params.id;
+  const { title, pass, additionalinfo} = req.body;
+  if (!title || !pass) {
+    res.status(422).json({ error: "fields empty" });
+  }
+
+
+  try {
+    const passwd_details = await Password.findByIdAndUpdate(id, {
+      title, pass, additionalinfo
+    });
+    //no need to call save...save already called
+
+    if (passwd_details) {
+      res.status(201).json({ message: "password details updated successfully" });
+    }
+    else {
+      res.status(422).json({ message: "unable to update pwd details" });
+    }
+
+  } catch (err) {
+    console.log(err);
+  }
+};
