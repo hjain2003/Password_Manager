@@ -7,8 +7,8 @@ const userSchema = new mongoose.Schema({
         type: String,
         required:true
     },
-    phoneno:{
-        type: Number,
+    email:{
+        type: String,
         required: true
     },
     passkey: {
@@ -29,7 +29,10 @@ const userSchema = new mongoose.Schema({
                 required :true
             }
         }
-    ]
+    ],
+    otp:{
+        type: String,
+    },
 });
 
 
