@@ -1,5 +1,6 @@
 import React from 'react'
 import './Register.css';
+import { NavLink } from 'react-router-dom';
 
 const Register = () => {
     return (
@@ -18,7 +19,7 @@ const Register = () => {
                         <input type="submit" name="submit" id="submit_form" value="Register"/>
                     </form>
                     <br />
-                    <span id="already">Already have an account ? <a href="">Login here</a></span>
+                    <span id="already">Already have an account ? <NavLink to='/login'>Login here</NavLink></span>
                 </div>
             </div>
         </>

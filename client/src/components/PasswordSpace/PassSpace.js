@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './PassSpace.css';
 import PassCard from '../PasswordCard/PassCard';
+import { NavLink } from 'react-router-dom';
 
 const PassSpace = () => {
     const [passcards, setPassCards] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
@@ -35,7 +36,7 @@ const PassSpace = () => {
                         <input type="text" id="searchPass" placeholder="Enter title to search" />
                         <button>Search</button>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <button id="add_pass">+ Add Password</button>
+                        <button id="add_pass"><NavLink to='/addPass'>+Add password</NavLink></button>
                     </span>
                     <br />
                     {currentPasscards.map((item, index) => (

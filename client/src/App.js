@@ -7,17 +7,19 @@ import PassCard from './components/PasswordCard/PassCard';
 import PassSpace from './components/PasswordSpace/PassSpace';
 import AddPass from './components/AddPass/AddPass';
 import Otp from './components/OTPVerification/Otp';
+import { Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
     <>
-    {/* <Home/> */}
-    {/* <Register/> */}
-    {/* <Login/> */}
-    {/* <PassCard/> */}
-    {/* <PassSpace/> */}
-    {/* <AddPass/> */}
-    <Otp/>
+    <Routes>
+      <Route path='/' element={<Home/>}/>
+      <Route path='/register' element={<Register/>}/>
+      <Route path='/login' element={<Login/>}/>
+      <Route path='/passSpace' element={<PassSpace/>}/>
+      <Route path='/addPass' element={<AddPass/>}/>
+      <Route path='/otpverification' element={<Otp/>}/>
+    </Routes>
     </>
   );
 }
