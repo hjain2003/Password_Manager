@@ -6,6 +6,7 @@ import Login from './components/Register/Login';
 import PassCard from './components/PasswordCard/PassCard';
 import PassSpace from './components/PasswordSpace/PassSpace';
 import AddPass from './components/AddPass/AddPass';
+import Otp from './components/OTPVerification/Otp';
 
 function App() {
   return (
@@ -15,7 +16,8 @@ function App() {
     {/* <Login/> */}
     {/* <PassCard/> */}
     {/* <PassSpace/> */}
-    <AddPass/>
+    {/* <AddPass/> */}
+    <Otp/>
     </>
   );
 }
