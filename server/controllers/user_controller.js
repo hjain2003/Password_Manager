@@ -140,6 +140,10 @@ export const verifyOTP = async (req, res) => {
 
       // Generate a new token or use the existing one
       const token = await user.generateAuthToken();
+      res.cookie("otpToken", token, {
+        expires: new Date(Date.now() + 25892000000),
+        httpOnly: true
+      });
 
       // Send the token in the response
       res.status(200).json({ message: 'OTP verified!', token });
@@ -155,7 +159,11 @@ export const verifyOTP = async (req, res) => {
 
 //logout
 export const logout = async(req,res)=>{
-  res.clearCookie('jwtoken',{path:'/'})
+  res.clearCookie('jwtoken',{path:'/'});
+  res.clearCookie('otpToken',{path:'/'});
   res.status(200).json({message : "user logged out"});
 }
 
+export const callUserDetails = async(req,res)=>{
+  res.send(req.rootUser);
+}
