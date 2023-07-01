@@ -9,6 +9,7 @@ import AddPass from './components/AddPass/AddPass';
 import Otp from './components/OTPVerification/Otp';
 import { Routes, Route } from 'react-router-dom';
 import Logout from './components/Register/Logout';
+import MoreInfo from './components/PasswordSpace/MoreInfo';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
       <Route path='/addPass' element={<AddPass/>}/>
       <Route path='/otpverification' element={<Otp/>}/>
       <Route path='/logout' element={<Logout/>}/>
+      <Route path='/passInfo/:id' element={<MoreInfo/>}/>
     </Routes>
     </>
   );

@@ -2,6 +2,26 @@ import mongoose from "mongoose";
 import Password from "../models/Password.js";
 import User from "../models/User.js";
 
+
+//myPasswords
+export const getMyPasswords = async (req, res) => {
+  try {
+    const userId = req.query.userId;
+
+    console.log(userId);
+    const posts = await Password.find({ user: userId });
+
+    if (posts) {
+      res.status(200).json({ posts });
+    } else {
+      res.status(500).json({ error: 'Unexpected error' });
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: 'Unexpected error' });
+  }
+};
+
 //setPassword
 export const setPassword = async (req, res) => {
   const { title, pass, additionalinfo, user } = req.body;
@@ -41,6 +61,23 @@ export const setPassword = async (req, res) => {
   } catch (err) {
     console.log(err);
     res.status(500).json({ error: "Unexpected error" });
+  }
+};
+
+export const getAdditionalInfo = async (req, res) => {
+  try {
+    const id = req.params.id
+
+    const password = await Password.findById(id);
+
+    if (!password) {
+      return res.status(404).json({ error: 'Password not found' });
+    }
+
+    return res.status(200).json({ additionalinfo: password.additionalinfo });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ error: 'Internal Server Error' });
   }
 };
 
