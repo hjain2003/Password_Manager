@@ -10,6 +10,7 @@ import Otp from './components/OTPVerification/Otp';
 import { Routes, Route } from 'react-router-dom';
 import Logout from './components/Register/Logout';
 import MoreInfo from './components/PasswordSpace/MoreInfo';
+import PassCardUpdate from './components/PasswordCard/PassCardUpdate';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
       <Route path='/otpverification' element={<Otp/>}/>
       <Route path='/logout' element={<Logout/>}/>
       <Route path='/passInfo/:id' element={<MoreInfo/>}/>
+      <Route path='/editPass/:id' element={<PassCardUpdate/>}/>
     </Routes>
     </>
   );

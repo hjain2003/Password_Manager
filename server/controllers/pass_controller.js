@@ -64,6 +64,25 @@ export const setPassword = async (req, res) => {
   }
 };
 
+//getPassByID
+export const getPassById = async (req, res) => {
+  const id = req.params.id; //get id from url
+
+  let pass_details;
+  try {
+    pass_details = await Password.findById(id); //id we are getting from the url
+    if (pass_details) {
+      res.status(201).json({ pass_details });
+    }
+    else {
+      res.status(422).json({ message: "pass not found" });
+    }
+
+  } catch (error) {
+    return console.log(error);
+  }
+};
+
 export const getAdditionalInfo = async (req, res) => {
   try {
     const id = req.params.id
@@ -85,26 +104,22 @@ export const getAdditionalInfo = async (req, res) => {
 export const deletePass = async (req, res) => {
   const id = req.params.id;
 
-  let pass;
   try {
-    const session = await mongoose.startSession();
-    session.startTransaction();
-
-    pass = await Password.findById(id).populate("user");
-    pass.user.passwords.pull(pass);
-    await pass.user.save({ session });
-    pass = await Password.findByIdAndRemove(id);
-    session.commitTransaction();
-
-    if(pass){
-      res.status(201).json({ message: "Password deleted successfully" });
+    const deletedPass = await Password.findByIdAndDelete(id);
+    if (deletedPass) {
+      const userId = deletedPass.user;
+      const user = await User.findById(userId);
+      if (user) {
+        user.passwords.pull(id);
+        await user.save();
+      }
+      res.status(200).json({ message: 'Password deleted successfully' });
+    } else {
+      res.status(404).json({ error: 'Password not found' });
     }
-    else{
-      res.status(422).json({message : "unable to delete"});
-    }
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({ error: "Unexpected error occurred" });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: 'Unexpected error' });
   }
 };
 

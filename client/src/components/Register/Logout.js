@@ -24,6 +24,7 @@ const Logout = () => {
           else{
             navigate('/login');
             localStorage.removeItem('userId');
+            localStorage.removeItem('jwtoken');
           }
         } catch (err) {
           console.log(err);

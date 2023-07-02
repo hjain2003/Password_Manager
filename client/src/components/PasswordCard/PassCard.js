@@ -1,40 +1,30 @@
 import React from 'react';
 import './PassCard.css';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Navigate} from 'react-router-dom';
 
 const PassCard = (props) => {
-  
-  const token = localStorage.getItem("jwtoken");
-  console.log("GOT FROM LOCAL STORAGE : ",token);
-  console.log('Authorization Header:', `Bearer ${token}`);
 
-  const handlePassDelete = async () => {
-      try {
-        const response = await fetch(`http://localhost:5000/password/delete/${props.passId}`, {
-          method: 'DELETE',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-          },
-        });
-        
-        const data = await response.json();
-
-        if (response.status===201) {
-          window.alert("Password deleted");
-          console.log(data.message);
-        } else {
-          // Handle error
-          console.log(data.error);
+  const handleDelete = async () => {
+    try {
+      const response = await fetch(`http://localhost:5000/password/${props.passId}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('jwtoken')}`
         }
-      } catch (error) {
-        console.log(error);
+      });
+
+      if (response.status === 200) {
+        window.alert("Password deleted successfully! Please refresh the page");
+        console.log('Password deleted successfully');
+      } else {
+        console.log('Error:', response.status);
       }
+    } catch (err) {
+      console.log(err);
     }
-  
-  
-  // const {passId} = props;
-  // console.log("PASS ID : ",passId);
+  };
+
   return (
     <>
       <div className="card">
@@ -43,8 +33,8 @@ const PassCard = (props) => {
         <span>
           <NavLink to={`/passInfo/${props.passId}`}>More info</NavLink>
         </span>
-        <button id="edit">Edit</button>
-        <button id="delete" onClick={handlePassDelete}>Delete</button>
+        <button id="edit"><NavLink to= {`/editPass/${props.passId}`}>Edit</NavLink></button>
+        <button id="delete" onClick={handleDelete}>Delete</button>
       </div>
       <br />
     </>
