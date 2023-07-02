@@ -87,7 +87,6 @@ export const deletePass = async (req, res) => {
 
   let pass;
   try {
-
     const session = await mongoose.startSession();
     session.startTransaction();
 
@@ -97,17 +96,20 @@ export const deletePass = async (req, res) => {
     pass = await Password.findByIdAndRemove(id);
     session.commitTransaction();
 
-    if (pass) {
-      res.status(201).json({ message: "password deleted successfully" });
+    if(pass){
+      res.status(201).json({ message: "Password deleted successfully" });
     }
-    else {
-      res.status(422).json({ message: "unable to delete password" });
+    else{
+      res.status(422).json({message : "unable to delete"});
     }
-
   } catch (error) {
-    return console.log(error);
+    console.log(error);
+    res.status(500).json({ error: "Unexpected error occurred" });
   }
-}
+};
+
+
+
 
 //editPass
 export const updatePass = async (req, res) => {

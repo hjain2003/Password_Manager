@@ -106,7 +106,7 @@ export const login = async (req, res) => {
           httpOnly: true
         });
         res.cookie("test", 'val');
-        res.status(201).json({ message: "otp to email sent!", userId: userLogin._id });
+        res.status(201).json({ message: "otp to email sent!", userId: userLogin._id, token: token });
       }
       else {
         res.status(400).json({ message: "pwd incorrect!" });

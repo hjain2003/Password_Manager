@@ -37,7 +37,7 @@ const MoreInfo = (props) => {
 
   useEffect(() => {
     ShowMoreInfo();
-  }, []);
+  });
 
   return (
     <>

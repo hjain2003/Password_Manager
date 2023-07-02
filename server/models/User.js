@@ -21,7 +21,9 @@ const userSchema = new mongoose.Schema({
     },
     passwords:[{
         type : mongoose.Types.ObjectId,
+        ref: "Password"
     }],
+    
     tokens : [
         {
             token:{

@@ -47,6 +47,7 @@ const Login = () => {
       navigate('/otpverification');
       console.log(data._id);
       localStorage.setItem("userId", data.userId);
+      localStorage.setItem("jwtoken",data.token);
       console.log(res.status);
       console.log(data);
     }
