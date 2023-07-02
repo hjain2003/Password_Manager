@@ -124,31 +124,30 @@ export const deletePass = async (req, res) => {
 };
 
 
-
-
 //editPass
+// updatePass
 export const updatePass = async (req, res) => {
   const id = req.params.id;
-  const { title, pass, additionalinfo} = req.body;
+  const { title, pass, additionalinfo } = req.body;
+
   if (!title || !pass) {
-    res.status(422).json({ error: "fields empty" });
+    res.status(422).json({ error: 'Fields are empty' });
   }
 
-
   try {
-    const passwd_details = await Password.findByIdAndUpdate(id, {
-      title, pass, additionalinfo
-    });
-    //no need to call save...save already called
+    const updatedPass = await Password.findByIdAndUpdate(
+      id,
+      { title, pass, additionalinfo },
+      { new: true }
+    );
 
-    if (passwd_details) {
-      res.status(201).json({ message: "password details updated successfully" });
+    if (updatedPass) {
+      res.status(200).json({ message: 'Password updated successfully' });
+    } else {
+      res.status(404).json({ error: 'Password not found' });
     }
-    else {
-      res.status(422).json({ message: "unable to update pwd details" });
-    }
-
   } catch (err) {
     console.log(err);
+    res.status(500).json({ error: 'Unexpected error' });
   }
 };

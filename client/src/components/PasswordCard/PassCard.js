@@ -1,8 +1,15 @@
 import React from 'react';
 import './PassCard.css';
-import { NavLink, Navigate} from 'react-router-dom';
+import { NavLink, Navigate, useNavigate} from 'react-router-dom';
 
 const PassCard = (props) => {
+
+  const navigate =useNavigate();
+  
+  const handleEdit = () => {
+    navigate(`/editPass/${props.passId}`);
+  };
+
 
   const handleDelete = async () => {
     try {
@@ -33,7 +40,7 @@ const PassCard = (props) => {
         <span>
           <NavLink to={`/passInfo/${props.passId}`}>More info</NavLink>
         </span>
-        <button id="edit"><NavLink to= {`/editPass/${props.passId}`}>Edit</NavLink></button>
+        <button id="edit" onClick={handleEdit}>Edit</button>
         <button id="delete" onClick={handleDelete}>Delete</button>
       </div>
       <br />
