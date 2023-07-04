@@ -11,11 +11,13 @@ import { Routes, Route } from 'react-router-dom';
 import Logout from './components/Register/Logout';
 import MoreInfo from './components/PasswordSpace/MoreInfo';
 import EditPass from './components/PasswordCard/EditPass';
+import Admin from './components/Admin/Admin';
+import AdminCard from './components/Admin/AdminCard';
 
 function App() {
   return (
     <>
-    <Routes>
+    {/* <Routes>
       <Route path='/' element={<Home/>}/>
       <Route path='/register' element={<Register/>}/>
       <Route path='/login' element={<Login/>}/>
@@ -25,7 +27,9 @@ function App() {
       <Route path='/logout' element={<Logout/>}/>
       <Route path='/passInfo/:id' element={<MoreInfo/>}/>
       <Route path='/editPass/:id' element={<EditPass/>}/>
-    </Routes>
+    </Routes> */}
+    <Admin/>
+    {/* <AdminCard/> */}
     </>
   );
 }

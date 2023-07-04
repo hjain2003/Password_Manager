@@ -167,3 +167,15 @@ export const logout = async(req,res)=>{
 export const callUserDetails = async(req,res)=>{
   res.send(req.rootUser);
 }
+
+//getAllUsers
+export const getAllUsers = async (req, res) => {
+  try {
+    const users = await User.find().select('name email');
+    res.status(200).json(users);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: 'Unexpected error' });
+  }
+};
+

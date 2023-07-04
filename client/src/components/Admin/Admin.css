@@ -1,0 +1,64 @@
+.pass_space_container{
+    height: 100vh;
+    width: 100%;
+    background-color: rgb(38, 126, 242);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.saved_passwords{
+    display: flex;
+    flex-direction: column;
+    /* border: 2px solid black; */
+    padding: 10px;
+}
+#pass_heading{
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+}
+.saved_passwords input{
+    font-size: 18px;
+    padding: 7px;
+    border: none;
+    width: 300px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+.saved_passwords span button{
+    height: 36.5px;
+    padding: 12.5px;
+    border: none;
+    color: white;
+    background-color: green;
+    cursor: pointer;
+}
+#add_pass{
+    background-color: black;
+    border-radius: 10px;
+}
+#add_pass a{
+    color: white;
+    text-decoration: none;
+}
+#add_pass:hover{
+    transform: scale(1.1);
+}
+
+.pagination button{
+    background-color: blueviolet;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    font-size: 15px;
+    cursor: pointer;
+}
+.pagination span{
+    font-size: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+#loading{
+    color: white;
+}

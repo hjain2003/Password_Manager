@@ -1,5 +1,5 @@
 import express from "express";
-import { callUserDetails, login, logout, signup, verifyOTP } from "../controllers/user_controller.js";
+import { callUserDetails, getAllUsers, login, logout, signup, verifyOTP } from "../controllers/user_controller.js";
 import { Authenticate } from "../middleware/auth.js";
 import { otpVerificationMiddleware } from "../middleware/otpverify.js";
 
@@ -10,5 +10,6 @@ userRouter.post('/login',login)
 userRouter.post('/verifyotp',Authenticate,verifyOTP);
 userRouter.get('/logout',logout);
 userRouter.get('/getUserData',Authenticate,otpVerificationMiddleware,callUserDetails);
+userRouter.get('/getAllUsers',getAllUsers);
 
 export default userRouter;
