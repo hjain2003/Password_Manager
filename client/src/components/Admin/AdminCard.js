@@ -6,8 +6,8 @@ const AdminCard= (props) => {
   return (
     <>
       <div className="card">
-        <span><b>User Name</b></span>
-        <span>emailisthe@gmail.com</span>
+        <span><b>{props.name}</b></span>
+        <span>{props.email}</span>
         <button id="delete">Delete</button>
       </div>
       <br />
