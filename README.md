@@ -1,2 +1,2 @@
 # Password_Manager
-A secure, reliable and easy-to-use platform to store and manage your passwords made using MERN
+A secure and easy-to-use platform with otp verification to store and manage your passwords made using MERN
