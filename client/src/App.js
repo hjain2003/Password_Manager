@@ -17,7 +17,7 @@ import AdminCard from './components/Admin/AdminCard';
 function App() {
   return (
     <>
-    {/* <Routes>
+    <Routes>
       <Route path='/' element={<Home/>}/>
       <Route path='/register' element={<Register/>}/>
       <Route path='/login' element={<Login/>}/>
@@ -27,9 +27,8 @@ function App() {
       <Route path='/logout' element={<Logout/>}/>
       <Route path='/passInfo/:id' element={<MoreInfo/>}/>
       <Route path='/editPass/:id' element={<EditPass/>}/>
-    </Routes> */}
-    <Admin/>
-    {/* <AdminCard/> */}
+      <Route path='/admin' element={<Admin/>}/>
+    </Routes> 
     </>
   );
 }
